@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panier - Nanie Miyuki</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1>Nanie Miyuki</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="cart.html">Panier</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h2>Votre Panier</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Produit</th>
+                    <th>Prix</th>
+                    <th>Quantité</th>
+                    <th>Sous-total</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="cart-items">
+                <!-- Contenu dynamique -->
+            </tbody>
+        </table>
+        <div class="total">
+            <strong>Total :</strong> <span id="total-price">0,00 €</span>
+        </div>
+        <div class="actions">
+            <a href="checkout.html" class="btn">Passer à la caisse</a>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
