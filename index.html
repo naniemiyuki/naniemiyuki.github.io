@@ -3,242 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nanie miyuki</title>
-    <style>
-        /* Styles CSS intégrés */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        header {
-            background-color: #333;
-            color: #fff;
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        header h1 {
-            margin: 0;
-        }
-
-        header nav ul {
-            list-style: none;
-            display: flex;
-            margin: 0;
-            padding: 0;
-        }
-
-        header nav ul li {
-            margin-left: 1rem;
-        }
-
-        header nav ul li a {
-            color: #fff;
-            text-decoration: none;
-        }
-
-        .banner {
-            text-align: center;
-            padding: 4rem 2rem;
-            background: #f4f4f4;
-        }
-
-        .banner h2 {
-            font-size: 2.5rem;
-        }
-
-        .banner p {
-            margin: 1rem 0;
-        }
-
-        .banner .btn {
-            display: inline-block;
-            padding: 0.5rem 1rem;
-            background: #007bff;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background 0.3s;
-        }
-
-        .banner .btn:hover {
-            background: #0056b3;
-        }
-
-        .products {
-            padding: 2rem;
-            background: #fff;
-            text-align: center;
-        }
-
-        .products h2 {
-            margin-bottom: 2rem;
-        }
-
-        .product-list {
-            display: flex;
-            justify-content: space-between;
-            gap: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .product {
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            padding: 1rem;
-            flex: 1 1 calc(33.333% - 2rem);
-            box-sizing: border-box;
-            text-align: center;
-        }
-
-        .product img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 5px;
-        }
-
-        .product h3 {
-            margin: 1rem 0 0.5rem;
-        }
-
-        .product .price {
-            font-weight: bold;
-            color: #007bff;
-        }
-
-        .product button {
-            padding: 0.5rem 1rem;
-            background: #28a745;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-
-        .product button:hover {
-            background: #218838;
-        }
-
-        footer {
-            background: #333;
-            color: #fff;
-            text-align: center;
-            padding: 1rem 0;
-            margin-top: 2rem;
-        }
-    </style>
-    <script>
-        // Gestion du panier
-        let cart = [];
-
-        // Ajouter un produit au panier
-        function addToCart(productName, productPrice) {
-            const product = { name: productName, price: productPrice, quantity: 1 };
-
-            // Vérifier si le produit est déjà dans le panier
-            const existingProduct = cart.find(item => item.name === productName);
-            if (existingProduct) {
-                existingProduct.quantity++;
-            } else {
-                cart.push(product);
-            }
-
-            updateCart();
-        }
-
-        // Mettre à jour l'affichage du panier
-        function updateCart() {
-            const cartDetails = cart.map(item => `${item.quantity} x ${item.name} (€${item.price})`).join("\n");
-            alert("Panier mis à jour :\n" + cartDetails);
-        }
-    </script>
+    <title>Nanie Miyuki - Boutique en Perles</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <!-- En-tête -->
     <header>
         <div class="logo">
-            <h1>Boutique En Ligne</h1>
+            <h1>Nanie Miyuki</h1>
+            <p>Créations artisanales en perles Miyuki</p>
         </div>
         <nav>
             <ul>
                 <li><a href="#home">Accueil</a></li>
                 <li><a href="#products">Produits</a></li>
-                <li><a href="#about">À Propos</a></li>
+                <li><a href="cart.html">Panier 🛒 <span id="cart-count">0</span></a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
     </header>
 
-    <!-- Section Principale -->
-    <main>
-        <!-- Bannière -->
-        <section id="home" class="banner">
-            <h2>Bienvenue dans notre boutique!</h2>
-            <p>Découvrez nos meilleurs produits et offres exclusives.</p>
-            <a href="#products" class="btn">Voir les produits</a>
-        </section>
+    <!-- Bannière -->
+    <section id="home" class="banner">
+        <h2>Bijoux élégants faits à la main</h2>
+        <p>Découvrez des créations uniques et raffinées en perles Miyuki.</p>
+        <a href="#products" class="btn">Voir nos collections</a>
+    </section>
 
-        <!-- Produits -->
-        <section id="products" class="products">
-            <h2>Nos Produits</h2>
-            <div class="product-list">
-                <div class="product">
-                    <img src="images/produit1.jpg" alt="Produit 1">
-                    <h3>Produit 1</h3>
-                    <p>Description du produit 1.</p>
-                    <p class="price">€29.99</p>
-                    <button onclick="addToCart('Produit 1', 29.99)">Ajouter au panier</button>
-                </div>
-                <div class="product">
-                    <img src="images/produit2.jpg" alt="Produit 2">
-                    <h3>Produit 2</h3>
-                    <p>Description du produit 2.</p>
-                    <p class="price">€19.99</p>
-                    <button onclick="addToCart('Produit 2', 19.99)">Ajouter au panier</button>
-                </div>
-                <div class="product">
-                    <img src="images/produit3.jpg" alt="Produit 3">
-                    <h3>Produit 3</h3>
-                    <p>Description du produit 3.</p>
-                    <p class="price">€39.99</p>
-                    <button onclick="addToCart('Produit 3', 39.99)">Ajouter au panier</button>
-                </div>
-            </div>
-        </section>
-
-        <!-- À Propos -->
-        <section id="about" class="about">
-            <h2>À Propos de Nous</h2>
-            <p>Nous sommes passionnés par la vente de produits de haute qualité à des prix abordables avec des perles miyuki (généralement des boucles d'oreille).</p>
-        </section>
-
-        <!-- Contact -->
-        <section id="contact" class="contact">
-            <h2>Contactez-Nous</h2>
-            <form action="#" method="post">
-                <label for="name">Nom :</label>
-                <input type="text" id="name" name="name" required>
-
-                <label for="email">Email :</label>
-                <input type="email" id="email" name="email" required>
-
-                <label for="message">Message :</label>
-                <textarea id="message" name="message" rows="5" required></textarea>
-
-                <button type="submit">Envoyer</button>
-            </form>
-        </section>
-    </main>
+    <!-- Produits -->
+    <section id="products" class="products">
+        <h2>Nos Boucles d'Oreilles</h2>
+        <div class="product-list" id="product-list">
+            <!-- Les produits seront ajoutés dynamiquement par JavaScript -->
+        </div>
+    </section>
 
     <!-- Pied de page -->
     <footer>
-        <p>&copy; 2024 Nanie miyuki. Tous droits réservés.</p>
+        <p>&copy; 2024 Nanie Miyuki. Tous droits réservés.</p>
     </footer>
+
+    <script src="main.js"></script>
 </body>
 </html>
