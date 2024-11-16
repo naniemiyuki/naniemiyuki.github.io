@@ -12,30 +12,50 @@
     </header>
     <div class="container">
         <h2>Paiement</h2>
-        <form id="checkout-form">
-            <label for="name">Nom :</label>
-            <input type="text" id="name" name="name" required>
+        <p>Total à payer : <strong id="total-price-display">0,00 €</strong></p>
 
-            <label for="address">Adresse :</label>
-            <input type="text" id="address" name="address" required>
+        <!-- Div pour le bouton PayPal -->
+        <div id="paypal-button-container"></div>
 
-            <label for="payment">Mode de paiement :</label>
-            <select id="payment" name="payment" required>
-                <option value="card">Carte Bancaire</option>
-                <option value="paypal">PayPal</option>
-            </select>
-
-            <button type="submit" class="btn">Payer</button>
-        </form>
+        <!-- En cas de problème -->
+        <div id="payment-status"></div>
     </div>
 
+    <!-- SDK PayPal -->
+    <script src="https://www.paypal.com/sdk/js?client-id=YOUR_CLIENT_ID&currency=EUR"></script>
+
     <script>
-        document.getElementById("checkout-form").onsubmit = function (e) {
-            e.preventDefault();
-            alert("Paiement réussi ! Merci pour votre commande !");
-            localStorage.clear();
-            window.location.href = "index.html";
-        };
+        // Obtenez le total du panier depuis le localStorage
+        const cart = JSON.parse(localStorage.getItem("cart")) || [];
+        const totalPrice = cart.reduce((sum, item) => sum + item.price * item.quantity, 0).toFixed(2);
+
+        // Affiche le prix total
+        document.getElementById("total-price-display").textContent = `${totalPrice} €`;
+
+        // Configuration des boutons PayPal
+        paypal.Buttons({
+            createOrder: function(data, actions) {
+                return actions.order.create({
+                    purchase_units: [{
+                        amount: {
+                            value: totalPrice // Montant total
+                        },
+                        description: "Achats chez Nanie Miyuki"
+                    }]
+                });
+            },
+            onApprove: function(data, actions) {
+                return actions.order.capture().then(function(details) {
+                    // Message de confirmation
+                    document.getElementById("payment-status").innerHTML = `<p>Paiement effectué avec succès par ${details.payer.name.given_name} ${details.payer.name.surname}.</p>`;
+                    // Vider le panier après paiement
+                    localStorage.clear();
+                });
+            },
+            onError: function(err) {
+                document.getElementById("payment-status").innerHTML = "<p>Une erreur est survenue. Veuillez réessayer.</p>";
+            }
+        }).render('#paypal-button-container'); // Rendre les boutons PayPal
     </script>
 </body>
 </html>
