@@ -21,7 +21,7 @@
         <div id="payment-status"></div>
     </div>
 
-    <!-- SDK PayPal -->
+    <!-- SDK PayPal (remplacez 'YOUR_CLIENT_ID' par votre propre Client ID) -->
     <script src="https://www.paypal.com/sdk/js?client-id=YOUR_CLIENT_ID&currency=EUR"></script>
 
     <script>
@@ -50,12 +50,13 @@
                     document.getElementById("payment-status").innerHTML = `<p>Paiement effectué avec succès par ${details.payer.name.given_name} ${details.payer.name.surname}.</p>`;
                     // Vider le panier après paiement
                     localStorage.clear();
+                    setTimeout(() => window.location.href = "index.html", 3000); // Retour à la page d'accueil après 3s
                 });
             },
             onError: function(err) {
                 document.getElementById("payment-status").innerHTML = "<p>Une erreur est survenue. Veuillez réessayer.</p>";
             }
-        }).render('#paypal-button-container'); // Rendre les boutons PayPal
+        }).render('#paypal-button-container'); // Rendre les boutons PayPal dans la div avec id 'paypal-button-container'
     </script>
 </body>
 </html>
