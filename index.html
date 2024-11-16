@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boutique En Ligne</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- En-tête -->
+    <header>
+        <div class="logo">
+            <h1>Boutique En Ligne</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#home">Accueil</a></li>
+                <li><a href="#products">Produits</a></li>
+                <li><a href="#about">À Propos</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Section Principale -->
+    <main>
+        <!-- Bannière -->
+        <section id="home" class="banner">
+            <h2>Bienvenue dans notre boutique!</h2>
+            <p>Découvrez nos meilleurs produits et offres exclusives.</p>
+            <a href="#products" class="btn">Voir les produits</a>
+        </section>
+
+        <!-- Produits -->
+        <section id="products" class="products">
+            <h2>Nos Produits</h2>
+            <div class="product-list">
+                <div class="product">
+                    <img src="images/produit1.jpg" alt="Produit 1">
+                    <h3>Produit 1</h3>
+                    <p>Description du produit 1.</p>
+                    <p class="price">€29.99</p>
+                    <button>Ajouter au panier</button>
+                </div>
+                <div class="product">
+                    <img src="images/produit2.jpg" alt="Produit 2">
+                    <h3>Produit 2</h3>
+                    <p>Description du produit 2.</p>
+                    <p class="price">€19.99</p>
+                    <button>Ajouter au panier</button>
+                </div>
+                <div class="product">
+                    <img src="images/produit3.jpg" alt="Produit 3">
+                    <h3>Produit 3</h3>
+                    <p>Description du produit 3.</p>
+                    <p class="price">€39.99</p>
+                    <button>Ajouter au panier</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- À Propos -->
+        <section id="about" class="about">
+            <h2>À Propos de Nous</h2>
+            <p>Nous sommes passionnés par la vente de produits de haute qualité à des prix abordables.</p>
+        </section>
+
+        <!-- Contact -->
+        <section id="contact" class="contact">
+            <h2>Contactez-Nous</h2>
+            <form action="#" method="post">
+                <label for="name">Nom :</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email :</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="message">Message :</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+
+                <button type="submit">Envoyer</button>
+            </form>
+        </section>
+    </main>
+
+    <!-- Pied de page -->
+    <footer>
+        <p>&copy; 2024 Boutique En Ligne. Tous droits réservés.</p>
+    </footer>
+</body>
+</html>
